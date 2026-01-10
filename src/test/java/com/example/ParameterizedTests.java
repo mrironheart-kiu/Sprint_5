@@ -10,14 +10,12 @@ import org.mockito.Spy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ParameterizedTests {
-    private Lion lion;
     @Spy
     private Feline feline;
 
     @BeforeEach
     void setUp() {
         feline = new Feline();
-        lion = new Lion(feline);
     }
 
     @ParameterizedTest
@@ -27,7 +25,7 @@ public class ParameterizedTests {
     })
     @DisplayName("Метод Lion.doesHaveMane() возвращает флаг наличия гривы у льва")
     void doesHaveManeTest(String sex, boolean expectedResult) throws Exception {
-        lion = new Lion(sex);
+        Lion lion = new Lion(feline, sex);
         boolean actualResult = lion.doesHaveMane();
 
         assertEquals(expectedResult, actualResult);
