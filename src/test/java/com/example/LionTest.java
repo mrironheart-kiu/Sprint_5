@@ -5,7 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.function.Executable;
-import org.mockito.Spy;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(MockitoExtension.class)
 class LionTest {
     private Lion lion;
-    @Spy
+    @Mock
     private Feline feline;
 
     @BeforeEach
@@ -28,8 +29,10 @@ class LionTest {
     @DisplayName("Метод Lion.getKittens() возвращает кол-во котят, равное 1")
     void getKittensReturnsOne() {
         int expectedResult = 1;
+        Mockito.when(feline.getKittens()).thenReturn(1);
         int actualResult = lion.getKittens();
 
+        Mockito.verify(feline, Mockito.times(1)).getKittens();
         assertEquals(expectedResult, actualResult);
     }
 
@@ -48,8 +51,10 @@ class LionTest {
     @DisplayName("Метод Lion.getFood() возвращает список питания для кошачих")
     void getFoodReturnsFoodListTest() throws Exception {
         List<String> expectedResult = new ArrayList<>(List.of("Животные", "Птицы", "Рыба"));
+        Mockito.when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         List<String> actualResult = lion.getFood();
 
+        Mockito.verify(feline, Mockito.times(1)).getFood("Хищник");
         assertEquals(expectedResult, actualResult);
     }
 }
