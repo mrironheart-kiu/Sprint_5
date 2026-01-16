@@ -27,13 +27,21 @@ class LionTest {
 
     @Test
     @DisplayName("Метод Lion.getKittens() возвращает кол-во котят, равное 1")
-    void getKittensReturnsOne() {
+    void getKittensReturnsOneTest() {
         int expectedResult = 1;
         Mockito.when(feline.getKittens()).thenReturn(1);
         int actualResult = lion.getKittens();
 
-        Mockito.verify(feline, Mockito.times(1)).getKittens();
         assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    @DisplayName("Метод Lion.getKittens() вызывает метод Feline.getKittens() один раз")
+    void getKittensCallsFelineGetKittensMethodOnceTest() {
+        Mockito.when(feline.getKittens()).thenReturn(1);
+        lion.getKittens();
+
+        Mockito.verify(feline, Mockito.times(1)).getKittens();
     }
 
     @Test
@@ -54,7 +62,15 @@ class LionTest {
         Mockito.when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         List<String> actualResult = lion.getFood();
 
-        Mockito.verify(feline, Mockito.times(1)).getFood("Хищник");
         assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    @DisplayName("Метод Lion.getFood() вызывает метод Feline.getFood(\"Хищник\") один раз")
+    void getFoodCallsTest() throws Exception {
+        Mockito.when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
+        lion.getFood();
+
+        Mockito.verify(feline, Mockito.times(1)).getFood("Хищник");
     }
 }
