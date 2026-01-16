@@ -47,7 +47,7 @@ class LionTest {
     @Test
     @DisplayName("Конструктор Lion(String sex) выбрасывает Exception при некорректных вводных")
     void constructorLionSexThrowsExceptionTest() {
-        Executable executable = () -> new Lion(feline,"Абра-Кадабра");
+        Executable executable = () -> new Lion(feline, "Абра-Кадабра");
 
         assertThrows(
                 Exception.class,
