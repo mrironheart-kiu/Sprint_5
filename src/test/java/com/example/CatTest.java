@@ -40,7 +40,15 @@ class CatTest {
         Mockito.when(feline.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         List<String> actualResult = cat.getFood();
 
-        Mockito.verify(feline, Mockito.times(1)).eatMeat();
         assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    @DisplayName("Метод Cat.getFood() вызывает метод Feline.eatMeat() один раз")
+    void getFoodCallsFelineEatFoodMethodOnceTest() throws Exception {
+        Mockito.when(feline.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
+        cat.getFood();
+
+        Mockito.verify(feline, Mockito.times(1)).eatMeat();
     }
 }
