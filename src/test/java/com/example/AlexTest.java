@@ -43,7 +43,7 @@ class AlexTest {
 
     @Test
     @DisplayName("Метод Alex.getKittens() возвращает кол-во котят, равное 0")
-    void getKittensReturnsZero() {
+    void getKittensReturnsZeroTest() {
         int expectedResult = 0;
         int actualResult = alex.getKittens();
 
