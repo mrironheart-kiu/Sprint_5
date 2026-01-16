@@ -28,7 +28,7 @@ class FelineTest {
 
     @Test
     @DisplayName("Метод Feline.getFamily() возвращает название семейства - \"Кошачьи\"")
-    void getFamilyReturnsFamilyName() {
+    void getFamilyReturnsFamilyNameTest() {
         String expectedResult = "Кошачьи";
         String actualResult = feline.getFamily();
 
@@ -37,7 +37,7 @@ class FelineTest {
 
     @Test
     @DisplayName("Метод Feline.getKittens() возвращает кол-во котят, равное 1")
-    void getKittensReturnsOne() {
+    void getKittensReturnsOneTest() {
         int expectedResult = 1;
         int actualResult = feline.getKittens();
 
