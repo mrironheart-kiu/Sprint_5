@@ -19,7 +19,7 @@ class AlexTest {
     private Feline feline;
 
     @BeforeEach
-    void setUp() throws Exception {
+    void createInstanceOfAlexWithMockedFeline() throws Exception {
         alex = new Alex(feline);
     }
 
