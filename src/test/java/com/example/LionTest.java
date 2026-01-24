@@ -49,10 +49,7 @@ class LionTest {
     void constructorLionSexThrowsExceptionTest() {
         Executable executable = () -> new Lion(feline, "Абра-Кадабра");
 
-        assertThrows(
-                Exception.class,
-                executable
-        );
+        assertThrows(Exception.class, executable);
     }
 
     @Test
